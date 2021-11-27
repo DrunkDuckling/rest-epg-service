@@ -8,12 +8,12 @@ public class Epg {
     private Program[] programlist;
     private Series[] serieslist;
     private Parentseries[] parentserieslist;
-    private Programguide[] programguide;
+    private Programguides programguide;
 
     public Epg() {
     }
 
-    public Epg(Channel[] channels, Program[] programlist, Series[] serieslist, Parentseries[] parentserieslist, Programguide[] programguide) {
+    public Epg(Channel[] channels, Program[] programlist, Series[] serieslist, Parentseries[] parentserieslist, Programguides programguide) {
         this.channels = channels;
         this.programlist = programlist;
         this.serieslist = serieslist;
@@ -53,11 +53,11 @@ public class Epg {
         this.parentserieslist = parentserieslist;
     }
 
-    public Programguide[] getProgramguide() {
+    public Programguides getProgramguide() {
         return programguide;
     }
 
-    public void setProgramguide(Programguide[] programguide) {
+    public void setProgramguide(Programguides programguide) {
         this.programguide = programguide;
     }
 
@@ -68,7 +68,7 @@ public class Epg {
                 ", programlist=" + Arrays.toString(programlist) +
                 ", serieslist=" + Arrays.toString(serieslist) +
                 ", parentserieslist=" + Arrays.toString(parentserieslist) +
-                ", programguide=" + Arrays.toString(programguide) +
+                ", programguide=" + programguide +
                 '}';
     }
 }

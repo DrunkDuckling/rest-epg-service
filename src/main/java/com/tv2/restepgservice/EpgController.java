@@ -42,12 +42,22 @@ public class EpgController {
             @RequestParam(value = "channelid", defaultValue = "null") String channelid,
             @RequestParam(value = "date", defaultValue = "null") String date){
 
+        List<Programguiderecord> pgrlist = new ArrayList<>();
+
         if(channelid.equals("null") && date.equals("null") ) {
-            System.out.println("test");
             return epg.getProgramguide();
         }
 
-        return null;
+        for (Programguiderecord pgr : epg.getProgramguide().getProgramguiderecords()){
+            if(pgr.getChn_id().equals(channelid) && pgr.getStart_timestamp_announced().contains(date)){
+                pgrlist.add(pgr);
+            }
+        }
+
+        if(pgrlist.isEmpty()){
+            return "Input terms might be wrong or somthing went wrong";
+        }
+        return pgrlist;
     }
 
     @PostMapping(path = "/program")
