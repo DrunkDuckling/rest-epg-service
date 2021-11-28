@@ -14,15 +14,20 @@ public class EpgController {
         return epg.getParentserieslist();
     }
 
-    @GetMapping("/")
+    @GetMapping(value = "/", produces = "text/plain")
     public String info(){
         return "List of endpoints: " + "\n" +
-                "/channels: brings up the channels." + "\n" +
-                "/program: holds multiple options. " + "\n" +
-                " - Default: writing nothing provides the whole list of programs." + "\n" +
-                " - ?program=: Write either the title or ext_id of program to provide the wanted show. " +
+                "/channels : brings up the channels." + "\n" +
+                "/programguide : brings up the programs sent on a given channel on a given day. Takes two params:" + "\n" +
+                " - ?channelid= : the ID of the channel wanted" + "\n" +
+                " - &date= : The date the programs is aired" + "\n" +
+                "/program : holds multiple options. " + "\n" +
+                " - Default : writing nothing provides the whole list of programs." + "\n" +
+                " - ?program= : Write either the title or ext_id of program to provide the wanted show(s). " +
                 "using the name can bring up multiple shows" + "\n" +
-                " - TODO";
+                "/serie : provides a given series wanted from the parent list: " + "\n" +
+                " - ?serie= : Takes a name or id of the wanted series." + "\n" +
+                "/serieslist : provides series from the serieslist; providing individuel series with additional information";
     }
 
     @PostMapping(path = "/full")
