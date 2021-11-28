@@ -2,17 +2,11 @@ package com.tv2.restepgservice;
 
 import com.tv2.restepgservice.models.*;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class EpgController {
-
-    @PostMapping(path = "/test")
-    public Parentseries[] test(@RequestBody Epg epg){
-        return epg.getParentserieslist();
-    }
 
     @GetMapping(value = "/", produces = "text/plain")
     public String info(){
@@ -40,12 +34,11 @@ public class EpgController {
         return epg.getChannels();
     }
 
-    // TODO
     @PostMapping(path = "/programguide")
     public Object programguiderecords(
             @RequestBody Epg epg,
             @RequestParam(value = "channelid", defaultValue = "null") String channelid,
-            @RequestParam(value = "date", defaultValue = "null") String date){
+            @RequestParam(value = "date", defaultValue = "null") String date) {
 
         List<Programguiderecord> pgrlist = new ArrayList<>();
 
@@ -81,11 +74,9 @@ public class EpgController {
         // if param is either name or id of show return wanted programs
         for (Program pgm : epg.getProgramlist()){
             if(pgm.getTitle().equals(program)){
-                System.out.println("name");
                 programs.add(pgm);
             }
             if(pgm.getExt_id().equals(program)){
-                System.out.println("id");
                 return pgm;
             }
         }
@@ -106,11 +97,9 @@ public class EpgController {
 
         for (Series ser : epg.getSerieslist()){
             if(ser.getTitle().equals(serie)){
-                System.out.println("name");
                 series.add(ser);
             }
             if(ser.getExt_id().equals(serie)){
-                System.out.println("id");
                 return ser;
             }
         }
