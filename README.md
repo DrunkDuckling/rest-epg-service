@@ -21,4 +21,4 @@ The same list as below can be found using nothing as input in the endpoint besid
 -  /serieslist : provides series from the serieslist; providing individuel series with additional information
 
 ## Additional information
-The project is written in the IDE Intellij (Ultimate edition) and is testes using Postman as the client interacting with the service. 
+The project is written in the IDE Intellij (Ultimate edition) and is testes using Postman as the client interacting with the service. The applikation converts xml though the com.fasterxml.jackson.dataformat dependency. 
